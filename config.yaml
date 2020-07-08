@@ -1,0 +1,14 @@
+# 数据库地址
+DB_HOST: "host:port"
+# 数据库账号
+DB_USER: "test"
+# 数据库密码
+DB_PWD: "test123"
+# 数据库名称
+DB_NAME: "test"
+
+# token加密秘钥
+Token_KEY: "ming11112dkio987"
+
+# 当前服务地址
+HttpUrl: "http://127.0.0.1:1688"
