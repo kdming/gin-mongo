@@ -42,7 +42,7 @@ func CustomError(c *gin.Context) {
 				fmt.Println(errStr)
 				c.JSON(200, gin.H{"code": 1, "data": nil, "msg": "系统错误" + errStr.Error()})
 			default:
-				panic(err)
+				c.JSON(200, gin.H{"code": 1, "data": nil, "msg": "发生未知异常"})
 			}
 		}
 

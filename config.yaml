@@ -1,14 +1,14 @@
 # 数据库地址
-DB_HOST: "host:port"
+DB_HOST: "139.9.124.225:27017"
 # 数据库账号
-DB_USER: "test"
+DB_USER: "kdming"
 # 数据库密码
-DB_PWD: "test123"
+DB_PWD: "kdming1123"
 # 数据库名称
-DB_NAME: "test"
+DB_NAME: "surprise"
 
 # token加密秘钥
 Token_KEY: "ming11112dkio987"
 
 # 当前服务地址
-HttpUrl: "http://127.0.0.1:1688"
+HttpUrl: "http://127.0.0.1:8080"

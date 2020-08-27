@@ -107,7 +107,7 @@ func Update(table string, where, updatedItem interface{}) error {
 
 	s, c := GetSession(table)
 	defer s.Close()
-	err := c.Update(where, updatedItem)
+	err := c.Update(where, bson.M{"$set": updatedItem})
 	return err
 
 }
