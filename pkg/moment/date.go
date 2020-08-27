@@ -1,4 +1,4 @@
-package dateutil
+package moment
 
 import (
 	"strconv"
