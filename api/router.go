@@ -12,6 +12,7 @@ func InitRouter(g *gin.Engine) {
 	api := g.Group("/api/v1/")
 	middleware.Cors(api)
 	api.Use(middleware.CustomError)
+	middleware.RegisterPPROF(g, "/dev/pprof")
 
 	api.POST("login", v1.Login)
 	api.POST("register", v1.Register)
