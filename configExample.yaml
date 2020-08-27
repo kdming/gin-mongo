@@ -1,0 +1,14 @@
+# 数据库地址
+DB_HOST: ""
+# 数据库账号
+DB_USER: ""
+# 数据库密码
+DB_PWD: ""
+# 数据库名称
+DB_NAME: ""
+
+# token加密秘钥
+Token_KEY: ""
+
+# 当前服务地址
+HttpUrl: ""
