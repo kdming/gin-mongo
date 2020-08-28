@@ -14,9 +14,13 @@ type TokenModel struct {
 	User  bson.ObjectId
 }
 
-func MakeToken(model *TokenModel) (string, error) {
+var tokenKey = ""
 
-	conf := config.GetConfig()
+func init() {
+	tokenKey = config.GetConfig().Token_KEY
+}
+
+func MakeToken(model *TokenModel) (string, error) {
 
 	token := jwt.New(jwt.SigningMethodHS256)
 
@@ -24,7 +28,7 @@ func MakeToken(model *TokenModel) (string, error) {
 	claims["userId"] = model.User
 	claims["expDate"] = time.Now().Add(time.Hour * 500).Format("2006-01-02 15:04:05")
 
-	t, err := token.SignedString([]byte(conf.Token_KEY))
+	t, err := token.SignedString([]byte(tokenKey))
 	if err != nil {
 		return "", err
 	}
@@ -36,7 +40,7 @@ func MakeToken(model *TokenModel) (string, error) {
 func ParseToken(tokenStr string) (*TokenModel, error) {
 
 	token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
-		return []byte("secret"), nil
+		return []byte(tokenKey), nil
 	})
 	if err != nil {
 		return nil, errors.New("token解析失败")
