@@ -23,8 +23,6 @@ func Ok(c *gin.Context, msg string, data interface{}) {
 func Err(msg string, err error) {
 	if err != nil {
 		msg += ":" + err.Error()
-	} else {
-		msg += ""
 	}
-	panic("1#" + msg)
+	panic(msg)
 }
