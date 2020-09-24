@@ -19,8 +19,7 @@ func Register(c *gin.Context) {
 		e.Err("注册失败", err)
 	}
 
-	tkModel := &jwt.TokenModel{}
-	tkModel.User = user.Id
+	tkModel := &jwt.TokenModel{User: user.Id}
 	token, err := jwt.MakeToken(tkModel)
 	if err != nil {
 		e.Err("token生成失败", err)
@@ -41,8 +40,7 @@ func Login(c *gin.Context) {
 		e.Err("登录失败", err)
 	}
 
-	tkModel := &jwt.TokenModel{}
-	tkModel.User = user.Id
+	tkModel := &jwt.TokenModel{User: user.Id}
 	token, err := jwt.MakeToken(tkModel)
 	if err != nil {
 		e.Err("token生成失败", err)

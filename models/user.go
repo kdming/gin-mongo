@@ -3,30 +3,33 @@ package models
 import (
 	"app/dao"
 	"app/pkg/e"
-	"time"
 
-	"gopkg.in/mgo.v2/bson"
+	"go.mongodb.org/mongo-driver/mongo"
+
+	"github.com/qiniu/qmgo/field"
+
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 type User struct {
-	Id        bson.ObjectId `bson:"_id,omitempty"`
-	Name      string        `bson:"name" form:"name" json:"name" binding:"required"`
-	Password  string        `bson:"password" form:"password" json:"password" binding:"required"`
-	CreatedAt time.Time     `bson:"createdAt"` // 创建日期
-	UpdatedAt time.Time     `bson:"updatedAt"` // 更新日期
+	field.DefaultField `bson:",inline"`
+	Name               string `bson:"name" json:"name" binding:"required"`
+	Password           string `bson:"password" json:"password" binding:"required"`
 }
 
 func (user *User) Save() error {
-	user.Id = bson.NewObjectId()
-	return dao.Create("users", user)
+	return dao.Insert("users", user)
 }
 
 func (user *User) Login() error {
-	err := dao.FindOne("users", user, bson.M{"name": user.Name, "password": user.Password})
+	err := dao.FindOne("users", bson.M{"name": user.Name, "password": user.Password}, user)
 	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return e.NewError("用户不存在")
+		}
 		return err
 	}
-	if user.Id.Hex() == "" {
+	if user.Id.IsZero() {
 		return e.NewError("用户不存在")
 	}
 	return nil

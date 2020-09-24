@@ -5,26 +5,25 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 
-	"gopkg.in/mgo.v2/bson"
+	"github.com/gin-gonic/gin"
+	"github.com/qiniu/qmgo/field"
 )
 
 type Logger struct {
-	Id         bson.ObjectId `bson:"_id,omitempty"`
-	User       bson.ObjectId `bson:"user,omitempty"`
-	StartTime  time.Time     `bson:"startTime"`
-	EndTime    time.Time     `bson:"endTime"`
-	UseTime    string        `bson:"useTime"`
-	IP         string        `bson:"ip"`
-	Method     string        `bson:"method"`
-	Url        string        `bson:"url"`
-	StatusCode int           `bson:"statusCode"`
-	Type       string        `bson:"type"`
-	ErrMsg     string        `bson:"errMsg"`
-	StackInfo  string        `bson:"stackInfo"`
-	CreatedAt  time.Time     `bson:"createdAt"` // 创建日期
-	UpdatedAt  time.Time     `bson:"updatedAt"` // 更新日期
+	field.DefaultField `bson:",inline"`
+	User               primitive.ObjectID `bson:"user,omitempty"`
+	StartTime          time.Time          `bson:"startTime"`
+	EndTime            time.Time          `bson:"endTime"`
+	UseTime            string             `bson:"useTime"`
+	IP                 string             `bson:"ip"`
+	Method             string             `bson:"method"`
+	Url                string             `bson:"url"`
+	StatusCode         int                `bson:"statusCode"`
+	Type               string             `bson:"type"`
+	ErrMsg             string             `bson:"errMsg"`
+	StackInfo          string             `bson:"stackInfo"`
 }
 
 func (logger *Logger) Start() {
@@ -57,7 +56,7 @@ func (logger *Logger) End(c *gin.Context) {
 		logger.Type = "normal"
 	}
 
-	if err := dao.Create("requestLogs", logger); err != nil {
+	if err := dao.Insert("requestLogs", logger); err != nil {
 		fmt.Println("日志记录失败")
 	}
 }

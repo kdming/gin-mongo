@@ -4,7 +4,6 @@ import (
 	"app/models"
 	"fmt"
 	"runtime"
-	"strings"
 
 	"github.com/gin-gonic/gin"
 )
@@ -34,8 +33,7 @@ func CustomError(c *gin.Context) {
 			case string:
 				logger.ErrMsg = errStr
 				logger.End(c)
-				p := strings.Split(errStr, "#")
-				c.JSON(200, gin.H{"code": p[0], "data": nil, "msg": p[1]})
+				c.JSON(200, gin.H{"code": 1, "data": nil, "msg": errStr})
 			case error:
 				logger.ErrMsg = errStr.Error()
 				logger.End(c)

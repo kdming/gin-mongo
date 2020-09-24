@@ -5,13 +5,14 @@ import (
 	"errors"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson/primitive"
+
 	"github.com/dgrijalva/jwt-go"
-	"gopkg.in/mgo.v2/bson"
 )
 
 type TokenModel struct {
 	Token string
-	User  bson.ObjectId
+	User  primitive.ObjectID
 }
 
 var tokenKey = ""
@@ -59,7 +60,7 @@ func ParseToken(tokenStr string) (*TokenModel, error) {
 		}
 
 		model := &TokenModel{}
-		model.User = bson.ObjectIdHex(userId.(string))
+		model.User, _ = primitive.ObjectIDFromHex(userId.(string))
 
 		return model, nil
 

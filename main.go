@@ -10,9 +10,7 @@ import (
 
 func main() {
 
-	if !dao.Connect() {
-		panic("数据库连接失败!!!")
-	}
+	dao.Connect()
 
 	g := gin.Default()
 	api.InitRouter(g)
