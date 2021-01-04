@@ -13,7 +13,7 @@ import (
 
 type Logger struct {
 	field.DefaultField `bson:",inline"`
-	User               primitive.ObjectID `bson:"user,omitempty"`
+	UserId             primitive.ObjectID `bson:"userId,omitempty"`
 	StartTime          time.Time          `bson:"startTime"`
 	EndTime            time.Time          `bson:"endTime"`
 	UseTime            string             `bson:"useTime"`

@@ -3,7 +3,7 @@ package v1
 import (
 	"app/models"
 	"app/pkg/e"
-	"app/pkg/jwt"
+	"app/service/user_service"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,8 +19,8 @@ func Register(c *gin.Context) {
 		e.Err("注册失败", err)
 	}
 
-	tkModel := &jwt.TokenModel{User: user.Id}
-	token, err := jwt.MakeToken(tkModel)
+	tokenSvc := user_service.TokenSvc{}
+	token, err := tokenSvc.MakeToken(user)
 	if err != nil {
 		e.Err("token生成失败", err)
 	}
@@ -40,8 +40,8 @@ func Login(c *gin.Context) {
 		e.Err("登录失败", err)
 	}
 
-	tkModel := &jwt.TokenModel{User: user.Id}
-	token, err := jwt.MakeToken(tkModel)
+	tokenSvc := user_service.TokenSvc{}
+	token, err := tokenSvc.MakeToken(user)
 	if err != nil {
 		e.Err("token生成失败", err)
 	}

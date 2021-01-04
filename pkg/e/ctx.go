@@ -2,8 +2,8 @@ package e
 
 import (
 	"errors"
-
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 func NewError(msg string) error {
@@ -25,4 +25,14 @@ func Err(msg string, err error) {
 		msg += ":" + err.Error()
 	}
 	panic(msg)
+}
+
+func GetUserId(c *gin.Context) primitive.ObjectID {
+	userId, _ := c.Get("userId")
+	return userId.(primitive.ObjectID)
+}
+
+func GetUserRole(c *gin.Context) int {
+	role, _ := c.Get("role")
+	return role.(int)
 }
