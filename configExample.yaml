@@ -8,7 +8,6 @@ DB_PWD: ""
 DB_NAME: ""
 
 # token加密秘钥
-Token_KEY: ""
-
-# 当前服务地址
-HttpUrl: ""
+TOKENKEY: ""
+# appPort
+APPPORT: "1688"
