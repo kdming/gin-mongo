@@ -10,5 +10,5 @@
 8.config.yaml 全局配置文件  
 9.main.go 项目入口  
 
-config.yaml填写完配置  
+创建config.yaml并填写相关配置  
 执行: `go run main.go`
