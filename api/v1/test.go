@@ -1,13 +1,11 @@
 package v1
 
 import (
-	"app/pkg/e"
+	"app/common/app"
 
 	"github.com/gin-gonic/gin"
 )
 
 func AuthTest(c *gin.Context) {
-
-	e.Ok(c, "通过测试", nil)
-
+	app.Ok(c, "通过测试", nil)
 }
