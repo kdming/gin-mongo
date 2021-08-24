@@ -14,6 +14,7 @@ type Config struct {
 	DB_PWD   string `yaml:"DB_PWD"`
 	DB_NAME  string `yaml:"DB_NAME"`
 	TOKENKEY string `yaml:"TOKENKEY"`
+	APPPORT  string `yaml:"APPPORT"`
 }
 
 func GetConfig() Config {
