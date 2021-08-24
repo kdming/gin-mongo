@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"app/pkg/config"
+	"app/common/config"
 	"context"
 	"fmt"
 
@@ -18,7 +18,6 @@ func Connect() {
 	}
 	dbName = conf.DB_NAME
 	var err error
-	// 链接数据库，默认有连接池无需配置
 	ctx := context.Background()
 	client, err = qmgo.NewClient(ctx, option)
 	if err != nil {
