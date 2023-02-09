@@ -1,4 +1,4 @@
-package e
+package app
 
 import (
 	"errors"
@@ -6,7 +6,22 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func NewError(msg string) error {
+func NewError(params ...interface{}) error {
+	msg := ""
+	for i := 0; i < len(params); i++ {
+		val := params[i]
+		switch val.(type) {
+		case string:
+			msg += val.(string)
+		case error:
+			if msg != "" {
+				msg += ":"
+			}
+			msg += val.(error).Error()
+		default:
+			msg += "发生错误"
+		}
+	}
 	return errors.New(msg)
 }
 

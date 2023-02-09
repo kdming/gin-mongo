@@ -14,11 +14,10 @@ var dbName string
 func Connect() {
 	conf := config.GetConfig()
 	option := &qmgo.Config{
-		Uri: "mongodb://" + conf.DB_USER + ":" + conf.DB_PWD + "@" + conf.DB_HOST + "/" + conf.DB_NAME,
+		Uri: conf.MongoUrl,
 	}
 	dbName = conf.DB_NAME
 	var err error
-	// 链接数据库，默认有连接池无需配置
 	ctx := context.Background()
 	client, err = qmgo.NewClient(ctx, option)
 	if err != nil {

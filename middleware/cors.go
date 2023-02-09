@@ -7,7 +7,7 @@ import (
 	cors "github.com/rs/cors/wrapper/gin"
 )
 
-// 跨域
+// Cors 跨域处理
 func Cors(api *gin.RouterGroup) {
 	api.Use(cors.New(cors.Options{
 		AllowedOrigins:     []string{"*"},

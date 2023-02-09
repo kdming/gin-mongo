@@ -31,7 +31,6 @@ func (logger *Logger) Start() {
 }
 
 func (logger *Logger) End(c *gin.Context) {
-
 	// 结束时间
 	logger.EndTime = time.Now()
 

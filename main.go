@@ -9,7 +9,6 @@ import (
 )
 
 func main() {
-
 	dao.Connect()
 
 	g := gin.Default()
@@ -20,5 +19,4 @@ func main() {
 	if err != nil {
 		fmt.Println("服务启动失败" + err.Error())
 	}
-
 }

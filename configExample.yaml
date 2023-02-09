@@ -1,11 +1,9 @@
 # 数据库地址
-DB_HOST: ""
-# 数据库账号
-DB_USER: ""
-# 数据库密码
-DB_PWD: ""
-# 数据库名称
-DB_NAME: ""
+MongoUrl: "mongodb://用户名:密码@服务地址/数据库名称"
+DB_NAME: "数据库名称"
+
+# 是否记录请求日志到数据库
+SaveRequestLog: false
 
 # token加密秘钥
 Token_KEY: ""

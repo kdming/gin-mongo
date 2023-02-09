@@ -5,11 +5,11 @@ import (
 	"time"
 )
 
-// 获取今天日期
-func GetToday(g bool) string {
-	if g {
-		return time.Now().Format("2006-01-02")
-	}
+func Get_Ytd() string {
+	return time.Now().Format("2006-01-02")
+}
+
+func GetYtd() string {
 	return time.Now().Format("20060102")
 }
 
