@@ -1,8 +1,8 @@
 package middleware
 
 import (
+	"app/common/config"
 	"app/models"
-	"app/pkg/config"
 	"app/service/user_service"
 
 	"github.com/gin-gonic/gin"

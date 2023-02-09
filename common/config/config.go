@@ -9,6 +9,7 @@ import (
 )
 
 type Config struct {
+	APPPORT        string `yaml:"APPPORT"`
 	SaveRequestLog bool   `yaml:"SaveRequestLog"`
 	MongoUrl       string `yaml:"MongoUrl"`
 	DB_NAME        string `yaml:"DB_NAME"`

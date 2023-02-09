@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"app/pkg/app"
+	"app/common/app"
 
 	"github.com/gin-gonic/gin"
 )

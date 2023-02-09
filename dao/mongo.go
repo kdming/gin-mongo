@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"app/pkg/config"
+	"app/common/config"
 	"context"
 	"fmt"
 

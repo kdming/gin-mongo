@@ -1,8 +1,8 @@
 package v1
 
 import (
+	"app/common/app"
 	"app/models"
-	"app/pkg/app"
 	"app/service/user_service"
 
 	"github.com/gin-gonic/gin"

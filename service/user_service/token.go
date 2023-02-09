@@ -1,9 +1,9 @@
 package user_service
 
 import (
+	"app/common/app"
+	"app/common/config"
 	"app/models"
-	"app/pkg/app"
-	"app/pkg/config"
 	"github.com/dgrijalva/jwt-go"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"

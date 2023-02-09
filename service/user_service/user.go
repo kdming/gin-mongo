@@ -8,26 +8,20 @@ import (
 	"go.mongodb.org/mongo-driver/mongo"
 )
 
-type AccountSvc struct {
+type UserSvc struct {
 }
 
-func (*AccountSvc) Register(user *models.User) error {
-	if user.Name == "" || user.Password == "" {
-		return app.NewError("信息不完整!")
-	}
+func (*UserSvc) Register(user *models.User) error {
 	return dao.Insert("users", user)
 }
 
-func (*AccountSvc) Login(user *models.User) error {
+func (*UserSvc) Login(user *models.User) error {
 	err := dao.FindOne("users", bson.M{"name": user.Name, "password": user.Password}, user)
 	if err != nil {
 		if err == mongo.ErrNoDocuments {
 			return app.NewError("用户不存在")
 		}
 		return err
-	}
-	if user.Id.IsZero() {
-		return app.NewError("用户不存在")
 	}
 	return nil
 }
